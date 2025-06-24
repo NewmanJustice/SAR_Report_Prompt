@@ -1,0 +1,246 @@
+Specification and Requirements (SAR) Document: Web Application & API Code Review
+
+Version: 2.0
+Last Updated: June 24, 2025
+Document Type: LLM Code Review Specification
+Scope: Web Applications and APIs
+
+Document Purpose
+
+This specification defines the requirements for conducting comprehensive code reviews of web applications and APIs using Large Language Model assistance. The review must analyze both frontend and backend components when present, focusing on code quality, security, performance, and maintainability according to industry best practices.
+
+Input Requirements
+
+Repository Analysis Scope
+- Analyze the complete repository structure provided
+- Review both frontend and backend code components when present
+- Focus on web application frameworks, API implementations, and related infrastructure code
+- Include configuration files, build scripts, and deployment specifications
+
+Review Requirements
+
+1. Code Quality Assessment
+
+Complexity Analysis
+Apply industry-standard thresholds:
+- Functions with cyclomatic complexity > 10: Flag as medium priority
+- Functions with cyclomatic complexity > 15: Flag as high priority
+- Nested loops/conditionals > 3 levels: Requires refactoring consideration
+- Function length > 50 lines: Review for single responsibility violations
+
+Code Duplication Detection
+- Code duplication > 5%: Requires immediate attention
+- Duplicated logic blocks > 10 lines: Flag for extraction
+- Copy-paste patterns: Identify and recommend consolidation
+
+Readability Evaluation
+Assess against web development standards:
+- Consistent naming conventions (camelCase for JavaScript, kebab-case for CSS)
+- Clear variable and function names that convey purpose
+- Appropriate code organization and module structure
+- Proper commenting for complex business logic
+- Adherence to established style guides (ESLint, Prettier, etc.)
+
+2. SOLID Principles Evaluation
+
+Specific Evaluation Criteria:
+- Single Responsibility: Count reasons for class/module changes, flag components with >3 responsibilities
+- Open-Closed: Identify modification points, suggest extension mechanisms for new features
+- Liskov Substitution: Test behavioral compatibility in inheritance hierarchies
+- Interface Segregation: Review API contracts and component interfaces for specificity
+- Dependency Inversion: Assess abstraction usage and dependency injection patterns
+
+Scoring System:
+Rate each principle 1-10 with specific justification and improvement recommendations.
+
+3. Testing Evaluation
+
+Coverage Requirements (Industry Standards):
+- Minimum line coverage: 80% for critical business logic
+- Branch coverage: 70% minimum for conditional logic
+- Function coverage: 90% for public APIs and exported functions
+
+Test Quality Assessment:
+- Unit test presence: Core business logic must have unit tests
+- Integration test coverage: API endpoints and database interactions
+- End-to-end test strategy: Critical user journeys for web applications
+- Test maintainability: Clear, focused test cases with descriptive names
+- Mock usage: Appropriate isolation of external dependencies
+
+Missing Test Areas:
+Identify specific components lacking adequate test coverage with priority ratings.
+
+4. Security Assessment
+
+OWASP Top 10 Compliance (Web Applications):
+- A01 Broken Access Control: Authentication and authorization implementation
+- A02 Cryptographic Failures: Data encryption and secure transmission
+- A03 Injection: SQL injection, XSS, and command injection vulnerabilities
+- A04 Insecure Design: Security-by-design principles
+- A05 Security Misconfiguration: Server and application configuration
+- A06 Vulnerable Components: Dependency vulnerability scanning
+- A07 Authentication Failures: Session management and user authentication
+- A08 Software Integrity Failures: Supply chain security
+- A09 Logging Failures: Security monitoring and incident response
+- A10 Server-Side Request Forgery: SSRF prevention measures
+
+API-Specific Security:
+- Input validation: Comprehensive sanitization and validation
+- Rate limiting: DoS protection implementation
+- CORS configuration: Appropriate cross-origin policies
+- API authentication: JWT, OAuth, or API key implementation
+- Secrets management: Environment variables and secure storage
+
+5. Performance Considerations
+
+Web Application Performance:
+- Bundle size analysis: JavaScript/CSS bundle optimization
+- Loading performance: Lazy loading, code splitting implementation
+- Caching strategies: Browser caching, CDN usage, API caching
+- Database query optimization: N+1 queries, indexing strategies
+- Memory usage patterns: Memory leaks and garbage collection
+
+API Performance:
+- Response time optimization: Database queries, external API calls
+- Pagination implementation: Large dataset handling
+- Async processing: Background jobs and queue management
+- Resource utilization: CPU and memory efficiency
+
+6. Documentation Review
+
+Code Documentation:
+- API documentation: OpenAPI/Swagger specifications for APIs
+- Component documentation: JSDoc for JavaScript, inline comments
+- README completeness: Setup, deployment, and usage instructions
+- Architecture documentation: System design and data flow diagrams
+
+Missing Documentation Areas:
+Identify gaps in technical documentation with priority levels.
+
+Output Specifications
+
+Report Structure Template
+
+# Code Review Report: [Repository Name]
+
+Review Date: [Date]
+Repository: [Repository Name/URL]
+Reviewer: [LLM Assistant]
+Application Type: [Web Application/API/Full-Stack]
+
+## Executive Summary
+[Max 500 words - High-level assessment with key findings]
+
+## Critical Issues Summary
+| Issue | Category | Severity | Impact | Location |
+|-------|----------|----------|---------|----------|
+| [Issue] | [Security/Quality/Performance] | [Critical/High/Medium/Low] | [Description] | [File:Line] |
+
+## Detailed Analysis
+
+### Code Quality Assessment
+#### Complexity Analysis
+- Average Cyclomatic Complexity: [Score]
+- Functions Exceeding Thresholds: [Count and examples]
+- Code Duplication Percentage: [Percentage]
+
+#### SOLID Principles Evaluation
+| Principle | Score (1-10) | Assessment | Recommendations |
+|-----------|--------------|------------|-----------------|
+| Single Responsibility | [Score] | [Assessment] | [Recommendations] |
+| Open-Closed | [Score] | [Assessment] | [Recommendations] |
+| Liskov Substitution | [Score] | [Assessment] | [Recommendations] |
+| Interface Segregation | [Score] | [Assessment] | [Recommendations] |
+| Dependency Inversion | [Score] | [Assessment] | [Recommendations] |
+
+### Testing Evaluation
+- Overall Test Coverage: [Percentage]
+- Line Coverage: [Percentage]
+- Branch Coverage: [Percentage]
+- Missing Test Areas: [List with priorities]
+
+### Security Assessment
+#### OWASP Top 10 Compliance
+[Detailed findings for each applicable category]
+
+#### Vulnerability Summary
+- Critical Vulnerabilities: [Count and description]
+- High Priority Issues: [Count and description]
+- Medium Priority Issues: [Count and description]
+
+### Performance Analysis
+- Identified Bottlenecks: [List with impact assessment]
+- Optimization Opportunities: [Specific recommendations]
+
+### Documentation Review
+- Documentation Coverage: [Assessment]
+- Missing Documentation: [List with priorities]
+
+## Recommendations and Next Steps
+
+### Immediate Actions (Critical/High Priority)
+1. [Specific recommendation with general guidance]
+2. [Specific recommendation with general guidance]
+
+### Short-term Improvements (Medium Priority)
+1. [Specific recommendation with general guidance]
+2. [Specific recommendation with general guidance]
+
+### Long-term Enhancements (Low Priority)
+1. [Specific recommendation with general guidance]
+2. [Specific recommendation with general guidance]
+
+## Severity Summary
+- Critical Issues: [Count]
+- High Priority Issues: [Count]
+- Medium Priority Issues: [Count]
+- Low Priority Issues: [Count]
+
+## Appendices
+### A. Code Examples
+[Specific code snippets demonstrating issues and improvements]
+
+### B. Metrics Summary
+[Detailed metrics tables and charts if applicable]
+
+Severity Definitions
+
+- Critical: Security vulnerabilities, system-breaking issues, data corruption risks
+- High: Performance bottlenecks affecting user experience, major code quality issues, significant maintainability problems
+- Medium: Moderate maintainability concerns, minor security issues, code style inconsistencies
+- Low: Documentation gaps, minor style improvements, non-critical optimizations
+
+File Naming Convention
+- Format: CodeReview_[RepoName]_[YYYY-MM-DD].md
+- Include metadata header with generation timestamp and review parameters
+
+Quality Assurance Guidelines (Optional)
+
+Self-Validation Checklist
+Before finalizing the report, verify:
+- All required sections are completed with specific findings
+- Severity ratings align with defined criteria
+- Recommendations include actionable guidance
+- Code examples are syntactically correct
+- External links are accessible and relevant
+- Report follows the specified markdown template
+- Grammar and spelling have been validated
+
+Cross-Reference Validation
+- Issues mentioned in Executive Summary appear in detailed sections
+- Severity counts in summary match detailed findings
+- Recommendations address identified issues
+- OWASP categories are relevant to the application type
+
+Success Metrics
+
+The code review should enable the development team to:
+- Identify and prioritize technical debt and security vulnerabilities
+- Understand specific areas requiring immediate attention
+- Plan improvement initiatives based on clear recommendations
+- Measure progress through quantifiable metrics and thresholds
+
+Note: This specification is designed for web applications and APIs. Focus analysis on relevant technologies, frameworks, and patterns commonly used in modern web development including but not limited to: React, Vue, Angular, Node.js, Express, Django, Flask, REST APIs, GraphQL, and associated tooling.
+```
+
+
