@@ -117,6 +117,62 @@ Code Documentation:
 Missing Documentation Areas:
 Identify gaps in technical documentation with priority levels.
 
+7. Legacy IT Risk Assessment Framework
+- The LLM must score the repository against the criteria detailed below. The final risk score is calculated by multiplying the **Likelihood Score** by the **Impact Score**.
+
+### 7.1. Scoring Instructions
+- **Inference and Assumptions:** For criteria that cannot be directly measured from the code (e.g., business impact, physical environment), the LLM must make educated inferences based on available information (such as README files, documentation, library age, and issue discussions).
+- **Transparency:** The final report must include a dedicated section explaining all assumptions, inferences, and interpretations made during the risk assessment. Any criteria that are omitted as non-applicable must be listed with a justification.
+
+### 7.2. Likelihood Criteria (L)
+The LLM will assess the likelihood of failure or compromise by scoring the repository against these factors. The highest score from any single criterion determines the overall Likelihood Score.
+
+*   **L5 - Very High:**
+    *   Known unpatched vulnerabilities with public exploits.
+    *   Unsupported hardware or software components.
+    *   Unsuitable physical environment for the system.
+    *   Lack of access to necessary expertise for support.
+*   **L4 - High:**
+    *   Components are out of support or extended support within 12 months.
+    *   Significant performance or capacity issues.
+    *   Lack of regular monitoring or health checks.
+*   **L3 - Medium:**
+    *   In-house applications with no active development or support team.
+    *   Components are on extended support but not due to expire within 12 months.
+    *   Limited documentation or knowledge of the system.
+*   **L2 - Low:**
+    *   Expired vendor contract for a component.
+    *   System is in-support, but the underlying technology is considered legacy or outdated.
+*   **L1 - Very Low:**
+    *   System is fully supported and regularly patched.
+
+### 7.3. Impact Criteria (C)
+The LLM will infer the business impact of a failure from repository documentation and context. The highest score from any single criterion determines the overall Impact Score.
+
+*   **C6 - Catastrophic:**
+    *   Direct threat to life and welfare or national security.
+*   **C5 - Critical:**
+    *   Major disruption to essential public services.
+    *   Significant, long-term impact on public finances or the economy.
+*   **C4 - High:**
+    *   Loss of public trust in government services.
+    *   Major data loss or breach involving sensitive citizen data.
+    *   Direct financial impact exceeding £10m.
+*   **C3 - Medium:**
+    *   Inability to deliver a key policy objective.
+    *   Significant reputational damage to the organization.
+    *   Direct financial impact between £1m and £10m.
+*   **C2 - Low:**
+    *   Breach of statutory or legal obligations.
+    *   Noticeable disruption to internal business operations.
+    *   Direct financial impact under £1m.
+*   **C1 - Very Low:**
+    *   Minor inconvenience to staff or internal processes.
+
+### 7.4. Risk Rating
+A system is classified as 'red-rated' if its final risk score (Likelihood x Impact) is 16 or higher.
+
+
 Output Specifications
 
 Report Structure Template
@@ -135,6 +191,10 @@ Application Type: [Web Application/API/Full-Stack]
 | Issue | Category | Severity | Impact | Location |
 |-------|----------|----------|---------|----------|
 | [Issue] | [Security/Quality/Performance] | [Critical/High/Medium/Low] | [Description] | [File:Line] |
+
+## Legacy IT Risk Assessment Summary
+
+### Overall Risk Rating
 
 ## Detailed Analysis
 
@@ -189,6 +249,16 @@ Application Type: [Web Application/API/Full-Stack]
 ### Long-term Enhancements (Low Priority)
 1. [Specific recommendation with general guidance]
 2. [Specific recommendation with general guidance]
+
+## Legacy IT Risk Assessment Framework assessment
+### Summary
+### Likelihood Criteria (L)
+### Impact Criteria (C)
+### Scoring 
+- **Inference and Assumptions:** For criteria that cannot be directly measured from the code (e.g., business impact, physical environment), the LLM must make educated inferences based on available information (such as README files, documentation, library age, and issue discussions).
+- **Transparency:** The final report must include a dedicated section explaining all assumptions, inferences, and interpretations made during the risk assessment. Any criteria that are omitted as non-applicable must be listed with a justification.
+
+
 
 ## Severity Summary
 - Critical Issues: [Count]
