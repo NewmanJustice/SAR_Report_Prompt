@@ -185,6 +185,8 @@ Repository: [Repository Name/URL]
 Reviewer: [LLM Assistant]
 Application Type: [Web Application/API/Full-Stack]
 
+- A statement to clarify to the reader that this is an AI generated report and the details should be varified by a subject matter expert. The report should be seen as a indication of potential problem areas for further investigation. 
+
 ## Executive Summary
 [Max 500 words - High-level assessment with key findings]
 
